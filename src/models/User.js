@@ -1,7 +1,4 @@
 const { Model, DataTypes } = require("sequelize");
-
-
-
 class User extends Model{
     static  init(sequelize){
         super.init({
@@ -13,6 +10,9 @@ class User extends Model{
         }
         )
         
+    }
+    static associate(models){
+        this.hasMany(models.Address,{foreignKey: "user_id" , as:"addresses"})
     }
 }
 
